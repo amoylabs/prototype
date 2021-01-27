@@ -89,7 +89,7 @@
         <module name="Indentation"/>
         <module name="OuterTypeFilename"/>
         <module name="UncommentedMain">             <!--Detects uncommented main methods.-->
-            <property name="excludedClasses" value="\.Main$"/>
+            <property name="excludedClasses" value="\.Main|Application$"/>
         </module>
         <module name="UpperEll"/>
 

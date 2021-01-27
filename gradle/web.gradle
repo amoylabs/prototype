@@ -1,11 +1,13 @@
+def mysqlVersion = '8.0.23'
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.flywaydb:flyway-core'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
 }
