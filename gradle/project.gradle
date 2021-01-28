@@ -5,7 +5,7 @@ subprojects {
     if (!childProjects.isEmpty()) return
 
     group = 'com.bn'
-	version = '0.0.1'
+    version = '0.0.1'
 
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'

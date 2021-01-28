@@ -1,8 +1,12 @@
-apply plugin: org.flywaydb.gradle.FlywayPlugin
+apply plugin: 'org.flywaydb.flyway'
 
 def mysqlVersion = '8.0.23'
 
 dependencies {
     implementation 'org.flywaydb:flyway-core'
     runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
+}
+
+flyway {
+    configFiles = ['src/main/resources/flyway.conf']
 }

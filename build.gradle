@@ -1,20 +1,20 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '2.4.2'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id "org.flywaydb.flyway" version "7.5.2"
+    id 'java'
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "org.flywaydb.flyway" version "7.5.2"
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 apply from: file("${rootDir}/gradle/project.gradle")
 
 configure(subprojects.findAll { it.name.endsWith('-db-migration') }) {
-	apply from: file("${rootDir}/gradle/db-migration.gradle")
+    apply from: file("${rootDir}/gradle/db-migration.gradle")
 }
 
 project(':xxx-web') {
-	apply from: file("${rootDir}/gradle/web.gradle")
+    apply from: file("${rootDir}/gradle/web.gradle")
 }
