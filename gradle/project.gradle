@@ -74,6 +74,11 @@ apply from: file("${rootDir}/gradle/check.gradle")
 allprojects {
     apply plugin: 'idea'
     idea.module.inheritOutputDirs = true
+
+    // TODO FIXME - for now just using this to suppress some errors
+    tasks.named("bootJar").configure {
+        enabled = false
+    }
 }
 
 tasks.named('wrapper') {

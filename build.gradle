@@ -9,6 +9,9 @@ repositories {
     mavenCentral()
 }
 
+// To customize a managed version of SLF4J which is controlled by the slf4j.version property
+ext['slf4j.version'] = '1.7.20'
+
 apply from: file("${rootDir}/gradle/project.gradle")
 
 configure(subprojects.findAll { it.name.endsWith('-db-migration') }) {
