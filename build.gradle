@@ -9,6 +9,7 @@ repositories {
     mavenCentral()
 }
 
+def junit5Version = '5.3.1'
 // To customize a managed version of SLF4J which is controlled by the slf4j.version property
 ext['slf4j.version'] = '1.7.20'
 
@@ -16,6 +17,13 @@ apply from: file("${rootDir}/gradle/project.gradle")
 
 configure(subprojects.findAll { it.name.endsWith('-db-migration') }) {
     apply from: file("${rootDir}/gradle/db-migration.gradle")
+}
+
+configure(subprojects.findAll { !it.name.endsWith('-migration') }) {
+    dependencies {
+        testImplementation "org.junit.jupiter:junit-jupiter-api:${junit5Version}"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junit5Version}"
+    }
 }
 
 project(':xxx-web') {
