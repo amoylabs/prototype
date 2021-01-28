@@ -1,4 +1,4 @@
-# BN-core webapp prototype
+# amoylabs webapp prototype
 Webapp prototype groundwork
 
 ### Built with
