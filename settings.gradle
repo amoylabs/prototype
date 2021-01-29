@@ -1,5 +1,6 @@
 include 'common',
         'xxx-db-migration',
+        'xxx-domain',
         'xxx-persistence',
         'xxx-service',
         'xxx-web'

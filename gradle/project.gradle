@@ -14,14 +14,20 @@ subprojects {
     sourceCompatibility = JavaVersion.VERSION_15
     targetCompatibility = JavaVersion.VERSION_15
 
-    tasks.withType(JavaCompile).configureEach {
-        options.encoding = 'UTF-8'
-        options.compilerArgs += ['-Xlint:all', '-proc:none', '-Werror']
-    }
+    def defaultEncoding = 'UTF-8'
+    tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
 
     repositories {
-        mavenCentral()
         mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
     }
 
     buildDir = "${rootDir}/build/${rootDir.relativePath(projectDir)}"
@@ -39,6 +45,12 @@ subprojects {
         doLast {
             sourceSets*.java.srcDirs*.each { it.mkdirs() }
             sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+        }
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
         }
     }
 
