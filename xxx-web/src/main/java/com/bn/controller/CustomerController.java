@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
     private CustomerService customerService;
 
-    @PostMapping()
+    @PostMapping
     public Long saveCustomer(@RequestBody SaveCustomerRequest request) {
         log.info("Save customer - {}", request.getMobilePhone());
         return customerService.save();

@@ -11,6 +11,8 @@ repositories {
     jcenter()
 }
 
+bootJar.enabled = false
+
 def junit5Version = '5.3.1'
 // To customize a managed version of SLF4J which is controlled by the slf4j.version property
 ext['slf4j.version'] = '1.7.20'
@@ -19,6 +21,7 @@ apply from: file("${rootDir}/gradle/project.gradle")
 
 configure(subprojects.findAll { it.name.endsWith('-db-migration') }) {
     apply from: file("${rootDir}/gradle/db-migration.gradle")
+    bootJar.enabled = false
 }
 
 configure(subprojects.findAll { !it.name.endsWith('-migration') }) {
@@ -26,6 +29,14 @@ configure(subprojects.findAll { !it.name.endsWith('-migration') }) {
         testImplementation "org.junit.jupiter:junit-jupiter-api:${junit5Version}"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junit5Version}"
     }
+}
+
+configure([project(':common'),
+           project(':xxx-domain'),
+           project(':xxx-persistence'),
+           project(':xxx-service')]) {
+    bootJar.enabled = false
+    jar.enabled = true
 }
 
 project(':xxx-persistence') {

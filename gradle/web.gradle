@@ -1,4 +1,4 @@
-def mysqlVersion = '8.0.23'
+apply plugin: 'application'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
