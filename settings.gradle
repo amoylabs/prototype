@@ -1,3 +1,4 @@
+rootProject.name = 'xxx'
 include 'common',
         'xxx-db-migration',
         'xxx-domain',

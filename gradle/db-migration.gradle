@@ -25,10 +25,3 @@ configure(tasks.findAll { it.name.startsWith('flyway') }) {
         }
     }
 }
-
-def mysqlConnectorVersion = '8.0.23'
-
-dependencies {
-    implementation 'org.flywaydb:flyway-core'
-    runtimeOnly "mysql:mysql-connector-java:${mysqlConnectorVersion}"
-}
