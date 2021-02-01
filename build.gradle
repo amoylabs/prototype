@@ -86,8 +86,13 @@ project(':xxx-web') {
         implementation project(':common')
         implementation project(':xxx-service')
         implementation 'org.springframework.boot:spring-boot-starter-web'
-        // implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'org.springframework.boot:spring-boot-starter-undertow'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    configurations {
+        implementation.exclude module: "spring-boot-starter-tomcat"
     }
 }

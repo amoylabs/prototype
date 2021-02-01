@@ -8,7 +8,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "info, health, beans, caches, env, httptrace, mappings, heapdump, threaddump"
 server:
   undertow:
     accesslog:
