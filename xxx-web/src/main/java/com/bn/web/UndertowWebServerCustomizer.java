@@ -1,6 +1,5 @@
 package com.bn.web;
 
-import io.undertow.Undertow;
 import io.undertow.UndertowOptions;
 import io.undertow.server.DefaultByteBufferPool;
 import io.undertow.server.handlers.accesslog.AccessLogHandler;
@@ -28,12 +27,12 @@ public class UndertowWebServerCustomizer implements WebServerFactoryCustomizer<U
         String pattern = serverProperties.getUndertow().getAccesslog().getPattern();
         // Record request timing only if the pattern matches
         if (logRequestProcessingTiming(pattern)) {
-            factory.addBuilderCustomizers(builder -> builder.setServerOption(UndertowOptions.RECORD_REQUEST_START_TIME, true));
+            factory.addBuilderCustomizers(builder -> builder.setServerOption(UndertowOptions.RECORD_REQUEST_START_TIME, Boolean.TRUE));
         }
 
         factory.addDeploymentInfoCustomizers(deploymentInfo -> deploymentInfo.addInitialHandlerChainWrapper(handler -> {
             Slf4jAccessLogReceiver accessLogReceiver = new Slf4jAccessLogReceiver();
-            return new AccessLogHandler(handler, accessLogReceiver, pattern, Undertow.class.getClassLoader());
+            return new AccessLogHandler(handler, accessLogReceiver, pattern, Thread.currentThread().getContextClassLoader());
         }));
 
         factory.addDeploymentInfoCustomizers(deploymentInfo -> {

@@ -17,7 +17,8 @@ bootJar {
 }
 
 def junit5Version = '5.3.1'
-def mysqlConnectorVersion = '8.0.23'
+def mysqlConnectorVersion = '8.0.22'
+def mybatisStarterVersion = '2.1.4'
 
 // To customize a managed version of SLF4J which is controlled by the slf4j.version property
 ext['slf4j.version'] = '1.7.20'
@@ -65,9 +66,9 @@ project(':xxx-persistence') {
         implementation 'org.springframework.boot:spring-boot-starter'
         // implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
         // implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-        implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
-        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisStarterVersion}"
         runtimeOnly "mysql:mysql-connector-java:${mysqlConnectorVersion}"
+        testRuntimeOnly "mysql:mysql-connector-java:${mysqlConnectorVersion}"
     }
 }
 
@@ -88,11 +89,17 @@ project(':xxx-web') {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.boot:spring-boot-starter-actuator'
         implementation 'org.springframework.boot:spring-boot-starter-undertow'
-        developmentOnly 'org.springframework.boot:spring-boot-devtools'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+        // developmentOnly 'org.springframework.boot:spring-boot-devtools'
     }
 
     configurations {
         implementation.exclude module: "spring-boot-starter-tomcat"
+    }
+
+    test {
+        useJUnitPlatform()
     }
 }
