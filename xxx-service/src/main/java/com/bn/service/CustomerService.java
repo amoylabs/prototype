@@ -1,5 +1,7 @@
 package com.bn.service;
 
+import com.bn.domain.Customer;
+
 public interface CustomerService {
-    Long save();
+    Long create(Customer customer);
 }

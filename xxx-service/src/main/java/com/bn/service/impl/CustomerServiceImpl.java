@@ -1,5 +1,6 @@
 package com.bn.service.impl;
 
+import com.bn.domain.Customer;
 import com.bn.repository.CustomerRepository;
 import com.bn.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,9 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Override
-    public Long save() {
-        return customerRepository.save();
+    public Long create(Customer customer) {
+        customer.setCustomerRepository(customerRepository);
+        return customerRepository.save(customer);
     }
 
     @Autowired

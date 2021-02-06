@@ -1,12 +1,18 @@
 package com.bn.controller.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @Builder
-public class SaveCustomerRequest {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateCustomerRequest {
     @JsonProperty("mobile_phone")
     private String mobilePhone;
     @JsonProperty("password")

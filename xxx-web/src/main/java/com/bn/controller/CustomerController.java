@@ -1,6 +1,7 @@
 package com.bn.controller;
 
-import com.bn.controller.request.SaveCustomerRequest;
+import com.bn.controller.request.CreateCustomerRequest;
+import com.bn.domain.Customer;
 import com.bn.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,13 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping
-    public Long saveCustomer(@RequestBody SaveCustomerRequest request) {
-        log.info("Save customer - {}", request.getMobilePhone());
-        return customerService.save();
+    public Long createCustomer(@RequestBody CreateCustomerRequest request) {
+        log.info("Create customer - {}", request.getMobilePhone());
+        Customer customer = Customer.builder()
+            .mobilePhone(request.getMobilePhone())
+            .password(request.getPassword())
+            .build();
+        return customerService.create(customer);
     }
 
     @Autowired
