@@ -13,19 +13,13 @@ public class Customer {
     private String passwordSalt;
     private CustomerStatus status;
 
-    private CustomerRepository customerRepository;
-
     private void generatePasswordSalt() {
         this.passwordSalt = PasswordUtils.getSalt();
     }
 
-    public Long save() {
+    public Long save(CustomerRepository customerRepository) {
         generatePasswordSalt();
         setStatus(CustomerStatus.ACTIVE);
         return customerRepository.save(this);
-    }
-
-    public void setCustomerRepository(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
     }
 }

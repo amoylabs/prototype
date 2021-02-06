@@ -12,8 +12,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Long create(Customer customer) {
-        customer.setCustomerRepository(customerRepository);
-        return customerRepository.save(customer);
+        return customer.save(customerRepository);
     }
 
     @Autowired
