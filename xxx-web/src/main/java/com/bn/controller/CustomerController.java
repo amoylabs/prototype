@@ -2,13 +2,18 @@ package com.bn.controller;
 
 import com.bn.controller.request.CreateCustomerRequest;
 import com.bn.domain.Customer;
+import com.bn.exception.ResourceNotFoundException;
 import com.bn.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Objects;
 
 @RequestMapping("api/customer")
 @RestController
@@ -24,6 +29,12 @@ public class CustomerController {
             .password(request.getPassword())
             .build();
         return customerService.create(customer);
+    }
+
+    @GetMapping("/{id}/error")
+    public void testGetCustomerFailure(@PathVariable String id) {
+        Objects.requireNonNull(id, "customer id should not be null");
+        throw new ResourceNotFoundException(String.format("customer is not found - %s", id));
     }
 
     @Autowired
