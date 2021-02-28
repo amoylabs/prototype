@@ -1,7 +1,5 @@
 package com.bn.exception;
 
-import com.bn.global.ErrorCode;
-import com.bn.global.ErrorSeverity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

@@ -1,4 +1,4 @@
-package com.bn.common;
+package com.bn.util;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

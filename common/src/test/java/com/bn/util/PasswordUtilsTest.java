@@ -1,4 +1,4 @@
-package com.bn.common;
+package com.bn.util;
 
 import org.junit.jupiter.api.Test;
 

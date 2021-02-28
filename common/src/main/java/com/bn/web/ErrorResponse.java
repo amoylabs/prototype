@@ -1,4 +1,4 @@
-package com.bn.global;
+package com.bn.web;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

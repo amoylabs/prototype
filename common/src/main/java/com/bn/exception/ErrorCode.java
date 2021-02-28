@@ -1,4 +1,4 @@
-package com.bn.global;
+package com.bn.exception;
 
 public interface ErrorCode {
     String SERVER_ERROR = "SERVER_ERROR";

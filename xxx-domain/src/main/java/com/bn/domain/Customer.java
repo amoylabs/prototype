@@ -1,6 +1,6 @@
 package com.bn.domain;
 
-import com.bn.common.PasswordUtils;
+import com.bn.util.PasswordUtils;
 import com.bn.repository.CustomerRepository;
 import lombok.Builder;
 import lombok.Data;

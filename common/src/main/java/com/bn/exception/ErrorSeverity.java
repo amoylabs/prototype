@@ -1,4 +1,4 @@
-package com.bn.global;
+package com.bn.exception;
 
 public enum ErrorSeverity {
     WARN,

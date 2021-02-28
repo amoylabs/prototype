@@ -61,6 +61,12 @@ configure([project(':common'),
     }
 }
 
+project(':common') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+}
+
 project(':xxx-domain') {
     dependencies {
         implementation project(':common')
