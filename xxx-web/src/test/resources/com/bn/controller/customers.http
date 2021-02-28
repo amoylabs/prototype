@@ -1,0 +1,8 @@
+### Send POST request with json body
+POST http://localhost:8080/api/customer
+Content-Type: application/json
+
+{
+  "mobile_phone": "13800000590",
+  "password": "Asdf1234!!!!"
+}

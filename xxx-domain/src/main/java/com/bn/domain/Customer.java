@@ -1,7 +1,6 @@
 package com.bn.domain;
 
 import com.bn.util.PasswordUtils;
-import com.bn.repository.CustomerRepository;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,9 +16,8 @@ public class Customer {
         this.passwordSalt = PasswordUtils.getSalt();
     }
 
-    public Long save(CustomerRepository customerRepository) {
+    public void init() {
         generatePasswordSalt();
         setStatus(CustomerStatus.ACTIVE);
-        return customerRepository.save(this);
     }
 }

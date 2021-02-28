@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bn.persistence.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.bn.persistence.CustomerDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="password_salt" jdbcType="VARCHAR" property="passwordSalt" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mobile_phone, password, password_salt, status, created_time, updated_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customers
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.bn.persistence.CustomerDO" useGeneratedKeys="true" keyProperty="id">
+    insert into customers (mobile_phone, password, password_salt, status, created_time, updated_time)
+    values (#{mobilePhone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{passwordSalt,jdbcType=VARCHAR},
+      #{status,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+</mapper>

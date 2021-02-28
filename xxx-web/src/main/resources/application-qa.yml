@@ -1,15 +1,12 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/main
+    jdbcUrl: jdbc:mysql://localhost:3306/main
     username: dev
     password: dev
+
 management:
   endpoints:
     web:
       exposure:
         include: "info, health, beans, caches, env, httptrace, mappings, heapdump, threaddump"
-server:
-  undertow:
-    accesslog:
-      pattern: "%h %l %u %t \"%r\" %s %b \"%{i,Referer}\" \"%{i,User-Agent}\" %D"
