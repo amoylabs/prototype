@@ -1,5 +1,5 @@
-### Send POST request with json body
-POST http://localhost:8080/api/customer
+### create customer
+POST http://localhost:8080/v1/customers
 Content-Type: application/json
 
 {

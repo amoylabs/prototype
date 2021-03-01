@@ -76,6 +76,7 @@ project(':xxx-domain') {
 
 project(':xxx-persistence') {
     dependencies {
+        implementation project(':common')
         implementation project(':xxx-domain')
         implementation 'org.springframework.boot:spring-boot-starter'
         // implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'

@@ -18,12 +18,11 @@ public interface CustomerBuilder {
     }
 
     static Customer fromDO(CustomerDO customerDO) {
-        Customer customer = Customer.builder()
-                .mobilePhone(customerDO.getMobilePhone())
-                .password(customerDO.getPassword())
-                .passwordSalt(customerDO.getPasswordSalt())
-                .status(customerDO.getStatus())
-                .build();
-        return customer;
+        return Customer.builder()
+            .mobilePhone(customerDO.getMobilePhone())
+            .password(customerDO.getPassword())
+            .passwordSalt(customerDO.getPasswordSalt())
+            .status(customerDO.getStatus())
+            .build();
     }
 }
