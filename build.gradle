@@ -93,6 +93,7 @@ project(':xxx-service') {
         implementation project(':xxx-domain')
         implementation project(':xxx-persistence')
         implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     }
 }
 
