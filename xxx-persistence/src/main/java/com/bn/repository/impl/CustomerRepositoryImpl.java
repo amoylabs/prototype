@@ -16,6 +16,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private CustomerMapper customerMapper;
 
     @Override
+    public Customer get(Long id) {
+        CustomerDO customerDO = customerMapper.selectByPrimaryKey(id);
+        return CustomerBuilder.fromDO(customerDO);
+    }
+
+    @Override
     public Long save(Customer customer) {
         CustomerDO customerDO = CustomerBuilder.fromDomain(customer);
         customerMapper.insert(customerDO);

@@ -35,7 +35,7 @@ public class CustomerControllerMockTest {
         Long result = 1L;
         when(customerService.create(any(Customer.class))).thenReturn(result);
         CreateCustomerRequest request = CreateCustomerRequest.builder().mobilePhone("12333222332").password("q1w2e3r4").build();
-        MockHttpServletRequestBuilder builder = post("/api/customer")
+        MockHttpServletRequestBuilder builder = post("/v1/customers")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request));
         ResultMatcher success = status().isOk();

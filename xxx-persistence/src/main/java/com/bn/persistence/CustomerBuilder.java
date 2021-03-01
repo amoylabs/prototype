@@ -16,4 +16,14 @@ public interface CustomerBuilder {
         data.setUpdatedTime(LocalDateTime.now());
         return data;
     }
+
+    static Customer fromDO(CustomerDO customerDO) {
+        Customer customer = Customer.builder()
+                .mobilePhone(customerDO.getMobilePhone())
+                .password(customerDO.getPassword())
+                .passwordSalt(customerDO.getPasswordSalt())
+                .status(customerDO.getStatus())
+                .build();
+        return customer;
+    }
 }

@@ -16,6 +16,11 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.save(customer);
     }
 
+    @Override
+    public Customer get(Long id) {
+        return customerRepository.get(id);
+    }
+
     @Autowired
     public void setCustomerRepository(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
