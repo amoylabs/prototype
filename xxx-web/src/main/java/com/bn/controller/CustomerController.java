@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Objects;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @RequestMapping("v1/customers")
 @RestController
@@ -21,14 +22,13 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("{id}")
-    public Customer getCustomer(@PathVariable Long id) {
-        Objects.requireNonNull(id, "customer id should not be null");
+    public Customer getCustomer(@NotNull @PathVariable Long id) {
         log.info("Get customer - {}", id);
         return customerService.get(id);
     }
 
     @PostMapping
-    public Long createCustomer(@RequestBody CreateCustomerRequest request) {
+    public Long createCustomer(@Valid @RequestBody CreateCustomerRequest request) {
         log.info("Create customer - {}", request.getMobilePhone());
         Customer customer = Customer.builder()
             .mobilePhone(request.getMobilePhone())

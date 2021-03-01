@@ -40,6 +40,16 @@ public class CustomerControllerMockTest {
             .content(objectMapper.writeValueAsString(request));
         ResultMatcher success = status().isOk();
         ResultMatcher body = content().string(result.toString());
-        mockMvc.perform(builder).andDo(print()).andExpect(status().isOk()).andExpect(success).andExpect(body);
+        mockMvc.perform(builder).andDo(print()).andExpect(success).andExpect(body);
+    }
+
+    @Test
+    public void createCustomerWithoutPassword() throws Exception {
+        CreateCustomerRequest request = CreateCustomerRequest.builder().mobilePhone("12333222332").password("").build();
+        MockHttpServletRequestBuilder builder = post("/v1/customers")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(request));
+        ResultMatcher badRequest = status().isBadRequest();
+        mockMvc.perform(builder).andDo(print()).andExpect(badRequest);
     }
 }
