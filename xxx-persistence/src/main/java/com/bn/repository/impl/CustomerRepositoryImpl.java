@@ -1,7 +1,7 @@
 package com.bn.repository.impl;
 
 import com.bn.domain.Customer;
-import com.bn.exception.ResourceNotFoundException;
+import com.bn.exception.NotFoundException;
 import com.bn.mapper.CustomerMapper;
 import com.bn.persistence.CustomerBuilder;
 import com.bn.persistence.CustomerDO;
@@ -18,7 +18,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Customer get(Long id) {
         CustomerDO customerDO = customerMapper.selectByPrimaryKey(id);
-        if (customerDO == null) throw new ResourceNotFoundException("customer not found - " + id);
+        if (customerDO == null) throw new NotFoundException("customer not found - " + id);
         return CustomerBuilder.fromDO(customerDO);
     }
 
